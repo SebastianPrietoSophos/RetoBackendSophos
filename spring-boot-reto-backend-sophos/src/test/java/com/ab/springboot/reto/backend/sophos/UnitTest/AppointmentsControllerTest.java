@@ -61,7 +61,7 @@ class AppointmentsControllerTest {
 	
 	//Controller GET
 	@Test
-	void Test_Get_Tests_No_Nulo () {
+	void Test_Get_Appointments_No_Nulo () {
 		List<appointments> appointments_list = new ArrayList<appointments>();
 		appointments_list.add(appointments);
 		Mockito.when(AppointmentsServiceMock.findAll()).thenReturn(appointments_list);
@@ -69,7 +69,7 @@ class AppointmentsControllerTest {
 	}
 	
 	@Test
-	void Test_Get_Tests_OK () {
+	void Test_Get_Appointments_OK () {
 		List<appointments> appointments_list = new ArrayList<appointments>();
 		appointments_list.add(appointments);
 		Mockito.when(AppointmentsServiceMock.findAll()).thenReturn(appointments_list);
@@ -77,60 +77,93 @@ class AppointmentsControllerTest {
 		Assertions.assertEquals(HttpStatus.OK, appointments_prueba.getStatusCode());
 	}
 	
+	@Test
+	void Test_Get_Appointments_NoContent() {
+		Mockito.when(AppointmentsServiceMock.findAll()).thenThrow();
+		var appointments_prueba = appointmentsController.findAll();
+		Assertions.assertEquals(HttpStatus.NO_CONTENT, appointments_prueba.getStatusCode());
+	}
 	//Controller GET BY ID
 	@Test
-	void Test_GetById_Tests_No_Nulo () {
+	void Test_GetById_Appointments_No_Nulo () {
 		Mockito.when(AppointmentsServiceMock.findById(1)).thenReturn(appointments);
 		Assertions.assertNotNull(appointmentsController.mostrar(1));
 	}
 	
 	@Test
-	void Test_GetById_Tests_OK () {
+	void Test_GetById_Appointments_OK () {
 		Mockito.when(AppointmentsServiceMock.findById(1)).thenReturn(appointments);
 		Assertions.assertEquals(HttpStatus.OK, appointmentsController.mostrar(1).getStatusCode());
+	}
+	
+	@Test
+	void Test_GetById_Appointments_NotFound () {
+		Mockito.when(AppointmentsServiceMock.findById(1)).thenReturn(null);
+		Assertions.assertEquals(HttpStatus.NOT_FOUND, appointmentsController.mostrar(1).getStatusCode());
 	}
 	
 	
 	//Controller POST
 	@Test
-	void Test_Post_Tests_No_Nulo () {
+	void Test_Post_Appointments_No_Nulo () {
 		Mockito.when(AppointmentsServiceMock.save(any(appointments.class))).thenReturn(appointments);;
 		var appointments_prueba = appointmentsController.save(new appointments());
 		Assertions.assertNotNull(appointments_prueba);
 	}
 	
 	@Test
-	void Test_Post_Tests_Created () {
+	void Test_Post_Appointments_Created () {
 		Mockito.when(AppointmentsServiceMock.save(any(appointments.class))).thenReturn(appointments);;
 		var appointments_prueba = appointmentsController.save(new appointments());
 		Assertions.assertEquals(HttpStatus.CREATED, appointments_prueba.getStatusCode());
+	}
+	
+	@Test
+	void Test_Post_Appointments_NotFound() {
+		Mockito.when(AppointmentsServiceMock.save(any(appointments.class))).thenThrow();
+		var appointments_prueba = appointmentsController.save(new appointments());
+		Assertions.assertEquals(HttpStatus.NOT_FOUND, appointments_prueba.getStatusCode());
 	}
 	
 	//Controller PUT
 	@Test
-	void Test_Put_Tests_No_Nulo () {
+	void Test_Put_Appointments_No_Nulo () {
 		Mockito.when(AppointmentsServiceMock.findById(1)).thenReturn(appointments);
 		var appointments_prueba = appointmentsController.update(new appointments(), 1);
 		Assertions.assertNotNull(appointments_prueba);
 	}
 	
 	@Test
-	void Test_Put_Tests_Created () {
+	void Test_Put_Appointments_Created () {
 		Mockito.when(AppointmentsServiceMock.findById(1)).thenReturn(appointments);
 		var appointments_prueba = appointmentsController.update(new appointments(), 1);
 		Assertions.assertEquals(HttpStatus.CREATED, appointments_prueba.getStatusCode());
 	}
 	
+	@Test
+	void Test_Put_Appointments_NotFound() {
+		Mockito.when(AppointmentsServiceMock.findById(1)).thenThrow();
+		var appointments_prueba = appointmentsController.update(new appointments(), 1);
+		Assertions.assertEquals(HttpStatus.NOT_FOUND, appointments_prueba.getStatusCode());
+	}
+	
 	//Controller Delete
 	@Test
-	void Test_Delete_Tests_OK() {
+	void Test_Delete_Appointments_OK() {
 		var appointments_prueba = appointmentsController.delete(1);
 		Assertions.assertEquals(HttpStatus.OK, appointments_prueba.getStatusCode());
 	}
 	
+	@Test
+	void Test_Delete_Appointments_NoContent() {
+		Mockito.when(AppointmentsServiceMock.findById(1)).thenThrow();
+		var appointments_prueba = appointmentsController.delete(1);
+		Assertions.assertEquals(HttpStatus.NO_CONTENT, appointments_prueba.getStatusCode());
+	}
+	
 	//Cotroller getbydate 
 	@Test
-	void Test_getByDate_Tests_No_Nulo () {
+	void Test_getByDate_Appointments_No_Nulo () {
 		List<appointments> appointments_list = new ArrayList<appointments>();
 		appointments_list.add(appointments);
 		Mockito.when(AppointmentsServiceMock.getByDate(LocalDate.now())).thenReturn(appointments_list);
@@ -138,7 +171,7 @@ class AppointmentsControllerTest {
 	}
 	
 	@Test
-	void Test_getByDate_Tests_OK () {
+	void Test_getByDate_Appointments_OK () {
 		List<appointments> appointments_list = new ArrayList<appointments>();
 		appointments_list.add(appointments);
 		Mockito.when(AppointmentsServiceMock.getByDate(LocalDate.now())).thenReturn(appointments_list);
@@ -146,9 +179,15 @@ class AppointmentsControllerTest {
 		Assertions.assertEquals(HttpStatus.OK, appointments_prueba.getStatusCode());
 	}
 	
+	@Test
+	void Test_GetByDate_Appointments_NoContent() {
+		Mockito.when(AppointmentsServiceMock.getByDate(LocalDate.now())).thenThrow();
+		var appointments_prueba = appointmentsController.getByDate(LocalDate.now());
+		Assertions.assertEquals(HttpStatus.NO_CONTENT, appointments_prueba.getStatusCode());
+	}
 	//Controller GetByAffiliate
 	@Test
-	void Test_getByAffiliates_Tests_No_Nulo () {
+	void Test_getByAffiliates_Appointments_No_Nulo () {
 		List<appointments> appointments_list = new ArrayList<appointments>();
 		appointments_list.add(appointments);
 		Mockito.when(AppointmentsServiceMock.getByAffiliate(1)).thenReturn(appointments_list);
@@ -156,12 +195,19 @@ class AppointmentsControllerTest {
 	}
 	
 	@Test
-	void Test_getByAffililiates_Tests_OK () {
+	void Test_getByAffililiates_Appointments_OK () {
 		List<appointments> appointments_list = new ArrayList<appointments>();
 		appointments_list.add(appointments);
 		Mockito.when(AppointmentsServiceMock.getByAffiliate(1)).thenReturn(appointments_list);
 		var appointments_prueba = appointmentsController.getByAffiliate(1);
 		Assertions.assertEquals(HttpStatus.OK, appointments_prueba.getStatusCode());
+	}
+	
+	@Test
+	void Test_GetByAffiliate_Appointments_NoContent() {
+		Mockito.when(AppointmentsServiceMock.getByAffiliate(1)).thenThrow();
+		var appointments_prueba = appointmentsController.getByAffiliate(1);
+		Assertions.assertEquals(HttpStatus.NO_CONTENT, appointments_prueba.getStatusCode());
 	}
 	
 
