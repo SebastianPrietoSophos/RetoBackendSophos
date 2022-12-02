@@ -1,0 +1,53 @@
+package com.ab.springboot.reto.backend.sophos.UnitTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.junit.jupiter.api.BeforeEach;
+import com.ab.springboot.reto.backend.sophos.controller.TestsController;
+import com.ab.springboot.reto.backend.sophos.dao.TestsDao;
+import com.ab.springboot.reto.backend.sophos.model.Tests;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+class TestsControllerTest {
+
+	@Autowired
+	Tests tests;
+	
+	//Mock de testsDao
+	TestsDao testsDaoMock = Mockito.mock(TestsDao.class);
+	@InjectMocks
+	private TestsController tests_controller;
+	@Autowired
+	private TestsController testsController = new TestsController();
+	
+	
+	
+	@Test
+	void Test_Get_Tests_OK () {
+		ArrayList<Tests> test_list = new ArrayList<Tests>();
+		test_list.add(new Tests());
+		Mockito.when(testsDaoMock.findAll()).thenReturn(test_list);
+		var test_prueba = tests_controller.findAll();		
+		Assertions.assertEquals(HttpStatus.OK, test_prueba.getStatusCode());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

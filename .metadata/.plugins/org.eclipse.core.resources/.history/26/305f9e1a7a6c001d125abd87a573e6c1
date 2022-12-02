@@ -1,3 +1,0 @@
-insert into tests(nombre, description) values ('Jose Lopera', 'aaaa bbbb ccc ddd');
-insert into tests(nombre, description) values ('Maria Lopez', 'xxxx yyyy www zzz');
-insert into tests(nombre, description) values ('Jose Lopera', 'jjjj mmmm nnn lll');

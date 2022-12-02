@@ -39,7 +39,7 @@ public class AffiliatesController {
 	}
 	
 	@GetMapping("/affiliates")	
-	public ResponseEntity<List<affiliates>> tests(){
+	public ResponseEntity<List<affiliates>> findAll(){
 		try {
 		return new ResponseEntity<>(affiliatesService.findAll(), HttpStatus.OK);
 		}catch(Exception e) {

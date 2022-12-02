@@ -1,0 +1,13 @@
+insert into tests(nombre, description) values ('Test 1', 'aaaa bbbb ccc ddd');
+insert into tests(nombre, description) values ('Test 2', 'xxxx yyyy www zzz');
+insert into tests(nombre, description) values ('Test 3', 'jjjj mmmm nnn lll');
+
+insert into affiliates(nombre, age, mail) values ('Jose Lopera', 23, 'jolo@yyy.com');
+insert into affiliates(nombre, age, mail) values ('Maria Lopez', 45, 'malo@yyy.com');
+insert into affiliates(nombre, age, mail) values ('Raul Gomez', 12, 'rago@yyy.com');
+
+INSERT into appointments 
+        (dates, hours, id_test, id_affiliate) 
+        values (TO_DATE('10/12/2012','dd/MM/yyyy'),
+                TO_DATE('08:12:50','hh:mm:ss'),
+                2, 3);

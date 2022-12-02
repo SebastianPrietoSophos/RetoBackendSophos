@@ -1,0 +1,11 @@
+package com.ab.springboot.reto.backend.sophos.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ab.springboot.reto.backend.sophos.model.appointments;
+
+
+public interface AppointmentsDao extends JpaRepository<appointments, Integer>{
+	
+
+}

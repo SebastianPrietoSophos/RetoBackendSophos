@@ -1,0 +1,116 @@
+package com.ab.springboot.reto.backend.sophos.model;
+
+import java.sql.Date;
+import java.sql.Time;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name = "appointments")
+public class appointments {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(name = "dates")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@JsonFormat(pattern="dd-MM-yyyy")
+	private Date dates; //(date y hour puede ocacionar problema porque son palabras clave de oracle)
+	
+	//format time
+	@Column(name = "hours")
+	@DateTimeFormat(pattern = "HH:mm:ss")
+	@JsonFormat(pattern="HH:mm:ss")
+	private Date hours;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_test")
+	private Tests tests;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_affiliate")
+	private affiliates affiliates;
+
+	public appointments() {
+		super();
+	}
+
+	public appointments(Integer id, Date date, Date hour, Tests tests, affiliates affiliates) {
+		super();
+		this.id = id;
+		this.dates = date;
+		this.hours = hour;
+		this.tests = tests;
+		this.affiliates = affiliates;
+	}
+
+	public appointments(Date date, Date hour, Tests tests, affiliates affiliates) {
+		super();
+		this.dates = date;
+		this.hours = hour;
+		this.tests = tests;
+		this.affiliates = affiliates;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Date getDate() {
+		return dates;
+	}
+
+	public void setDate(Date date) {
+		this.dates = date;
+	}
+
+	public Date getHour() {
+		return hours;
+	}
+
+	public void setHour(Date hour) {
+		this.hours = hour;
+	}
+
+	public Tests getTests() {
+		return tests;
+	}
+
+	public void setTests(Tests tests) {
+		this.tests = tests;
+	}
+
+	public affiliates getAffiliates() {
+		return affiliates;
+	}
+
+	public void setAffiliates(affiliates affiliates) {
+		this.affiliates = affiliates;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
