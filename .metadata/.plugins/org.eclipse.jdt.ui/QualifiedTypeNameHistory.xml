@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ControllerAdvice"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.dao.AffiliatesDao"/>
-    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.service.AffiliatesService"/>
-    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.model.affiliates"/>
     <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.dao.AppointmentsDao"/>
-    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.service.AppointmentsService"/>
-    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.model.appointments"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.jni.Time"/>
-    <fullyQualifiedTypeName name="java.sql.Time"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonFormat"/>
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
@@ -31,15 +22,12 @@
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="javax.persistence.Temporal"/>
     <fullyQualifiedTypeName name="javax.persistence.TemporalType"/>
-    <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.model.Tests"/>
     <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.dao.TestsDao"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="org.mockito.InjectMocks"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.extension.ExtendWith"/>
-    <fullyQualifiedTypeName name="org.mockito.Mockito"/>
     <fullyQualifiedTypeName name="org.mockito.junit.jupiter.MockitoExtension"/>
     <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.controller.TestsController"/>
     <fullyQualifiedTypeName name="java.util.List"/>
@@ -60,4 +48,16 @@
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
     <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxCrud.Collection"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.service.AffiliatesService"/>
+    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.controller.AffiliatesController"/>
+    <fullyQualifiedTypeName name="org.mockito.Mockito"/>
+    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.service.AppointmentsService"/>
+    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.controller.AppointmentsController"/>
+    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.model.appointments"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="java.time.LocalTime"/>
+    <fullyQualifiedTypeName name="java.sql.Time"/>
+    <fullyQualifiedTypeName name="com.ab.springboot.reto.backend.sophos.model.affiliates"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
