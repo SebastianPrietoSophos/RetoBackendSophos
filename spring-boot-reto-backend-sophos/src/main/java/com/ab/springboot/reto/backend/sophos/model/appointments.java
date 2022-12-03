@@ -3,6 +3,7 @@ package com.ab.springboot.reto.backend.sophos.model;
 import java.sql.Time;
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,25 +42,20 @@ public class appointments {
 	@JsonFormat(pattern="HH24:MI")
 	private Time hour;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.DETACH)
+	@Basic(fetch=FetchType.EAGER)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "id_test")
 	private Tests tests;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.DETACH)
+	@Basic(fetch=FetchType.EAGER)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "id_affiliate")
 	private affiliates affiliates;
 
 	public appointments() {
 		super();
-	}
-
-	public appointments(Integer id, LocalDate date, Time hour, Tests tests, affiliates affiliates) {
-		super();
-		this.id = id;
-		this.date = date;
-		this.hour = hour;
-		this.tests = tests;
-		this.affiliates = affiliates;
 	}
 
 	public appointments(LocalDate date, Time hour, Tests tests, affiliates affiliates) {

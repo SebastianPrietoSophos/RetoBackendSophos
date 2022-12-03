@@ -19,3 +19,4 @@ public interface AppointmentsDao extends JpaRepository<appointments, Integer>{
 	@Query("select a from appointments a where a.affiliates.id = :var_parm")
 	public List<appointments> getByAffiliate(@Param("var_parm") Integer id_affiliate);
 }
+
