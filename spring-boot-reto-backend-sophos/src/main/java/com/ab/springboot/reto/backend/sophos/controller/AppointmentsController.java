@@ -36,7 +36,7 @@ public class AppointmentsController {
 	@Autowired
 	private AppointmentsService appointmentsService;
 	
-	@PostMapping("/appointments")  //Insertar datos
+	@PostMapping("/appointments")  //Metodo post
 	public ResponseEntity<appointments> save(@RequestBody appointments appointments) {  //RequestBody toma el return lo convierte a tipo tests
 		try {
 			return new ResponseEntity<>(appointmentsService.save(appointments), HttpStatus.CREATED);
@@ -45,7 +45,7 @@ public class AppointmentsController {
 			}
 	}
 	
-	@GetMapping("/appointments")	
+	@GetMapping("/appointments")	// Metodo get (tada la lista)
 	public ResponseEntity<List<appointments>> findAll(){
 		try {
 		return new ResponseEntity<>(appointmentsService.findAll(), HttpStatus.OK);
@@ -54,7 +54,7 @@ public class AppointmentsController {
 		}
 	}
 	
-	@GetMapping("/appointments/{id}")
+	@GetMapping("/appointments/{id}")  //Metodo get by id
 	public ResponseEntity<appointments> mostrar(@PathVariable Integer id){
 		appointments appointmentsId = appointmentsService.findById(id);
 		if (appointmentsId == null) {
@@ -65,7 +65,7 @@ public class AppointmentsController {
 		}
 	}
 	
-	@PutMapping("/appointments/{id}")  //Actualizar tabla
+	@PutMapping("/appointments/{id}")  //Metodo para actualizar/modificar un registro
 	public ResponseEntity<appointments> update(@RequestBody appointments appointments, @PathVariable Integer id) {  //RequestBody toma el return lo convierte a tipo tests
 		try {
 			appointments appointmentsActual = appointmentsService.findById(id);
@@ -79,13 +79,9 @@ public class AppointmentsController {
 		}
 	}
 	
-	@DeleteMapping("appointments/{id}")
+	@DeleteMapping("appointments/{id}") //Metodo para eliminar un registro
 	public ResponseEntity<?> delete(@PathVariable Integer id) {
 		try {
-			appointments appointmentsActual = appointmentsService.findById(id);
-			if(appointmentsActual == null) {
-				return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-			}
 			appointmentsService.delete(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}catch(Exception e) {
@@ -93,7 +89,7 @@ public class AppointmentsController {
 		}
 	}
 	
-	@GetMapping("/appointments_date")
+	@GetMapping("/appointments_date")  //Metodo get by date
 	public ResponseEntity<List<appointments>> getByDate(@RequestParam("date") @DateTimeFormat(pattern="dd-MM-yyyy") LocalDate date){
 		try {
 			if(appointmentsService.getByDate(date).isEmpty()) {
@@ -106,7 +102,7 @@ public class AppointmentsController {
 			}
 	}
 	
-	@GetMapping("/appointments/affiliate/{id}")
+	@GetMapping("/appointments/affiliate/{id}") // metotodo get by id _ affiliate
 	public ResponseEntity<List<appointments>> getByAffiliate(@PathVariable Integer id){
 		try {
 			if(appointmentsService.getByAffiliate(id).isEmpty()) {

@@ -1,5 +1,0 @@
-package com.ab.springboot.reto.backend.sophos.service;
-
-public interface AppointmentsService {
-
-}

@@ -23,28 +23,30 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
+@Entity  //objetos de persistencia que se almacenan como registro en la base de datos
 @Table(name = "appointments")
 public class appointments {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //Id auto-generado
 	private Integer id;
 	
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "date_a")
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private  LocalDate date; //(date y hour puede ocacionar problema porque son palabras clave de oracle)
-	
+	                         // date no funcionó, se usó LocalDate
 	//format time
 	@Column(name = "hour_a")
 	@DateTimeFormat(pattern="HH24:MI")
 	@JsonFormat(pattern="HH24:MI")
 	private Time hour;
 	
-	@ManyToOne(cascade=CascadeType.DETACH)
-	@Basic(fetch=FetchType.EAGER)
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@ManyToOne(cascade=CascadeType.DETACH) // Entity relationship
+	                   //(the child entity will also get removed from the persistent context.)
+	@Basic(fetch=FetchType.EAGER) //fetch=buscar, eager cargar todos los campos de la entidad hija
+	@OnDelete(action = OnDeleteAction.CASCADE) // Para poder borrar el campo en la padre
+	                   // No tener problema con las foreign keys.
 	@JoinColumn(name = "id_test")
 	private Tests tests;
 	
@@ -54,6 +56,7 @@ public class appointments {
 	@JoinColumn(name = "id_affiliate")
 	private affiliates affiliates;
 
+	//Constructores getters y setters
 	public appointments() {
 		super();
 	}

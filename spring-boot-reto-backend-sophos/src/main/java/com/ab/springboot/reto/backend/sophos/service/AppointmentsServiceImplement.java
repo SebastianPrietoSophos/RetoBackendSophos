@@ -15,7 +15,7 @@ import com.ab.springboot.reto.backend.sophos.model.appointments;
 @Service
 public class AppointmentsServiceImplement implements AppointmentsService{
 	
-	@Autowired
+	@Autowired 
 	private AppointmentsDao appointmentsDao;
 
 	@Override
